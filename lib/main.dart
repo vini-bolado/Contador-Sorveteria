@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/image/image.jpg'),
+          image: AssetImage('assets/image/imagem.jpg'),
           fit: BoxFit.cover,
         )),
         child: Column(
@@ -73,9 +73,9 @@ class _HomePageState extends State<HomePage> {
             ),
             Text(
               '$count',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 100,
-                color: Colors.white,
+                color: isFull ? Colors.red : Colors.white,
               ),
             ),
             const SizedBox(
@@ -85,16 +85,18 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: decrement,
+                  onPressed: isEmpty ? null : decrement,
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
+                      backgroundColor: isEmpty
+                          ? Colors.white.withOpacity(0.2)
+                          : Colors.white,
                       fixedSize: const Size(100, 100),
                       primary: Colors.black,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),
                       )),
                   child: const Text(
-                    'Said',
+                    'Saiu',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 25,
@@ -105,16 +107,17 @@ class _HomePageState extends State<HomePage> {
                   width: 40,
                 ),
                 TextButton(
-                  onPressed: increment,
+                  onPressed: isFull ? null : increment,
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
+                      backgroundColor:
+                          isFull ? Colors.white.withOpacity(0.2) : Colors.white,
                       fixedSize: const Size(100, 100),
                       primary: Colors.black,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),
                       )),
                   child: const Text(
-                    'Entry',
+                    'Entrou',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 25,
